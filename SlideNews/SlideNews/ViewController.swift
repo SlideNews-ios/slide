@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, slideDelegate {
     var scrollView:SlideScrollView!
     var headerscrol:SlideScrollView!
+   
+    var arr = NSMutableArray()
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = SlideScrollView.init(frame: view.frame)
@@ -19,9 +21,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         scrollView.delegate = self
         
         headerscrol = SlideScrollView.init(frame: CGRectMake(0, 0, view.frame.width, 44))
-        headerscrol.initHeaderView(10)
+        let arr = ["快报","娱乐","视频","汽车","游戏","财经","军事","体育","历史","国际"] as NSArray
+        headerscrol.initHeaderView(arr)
         headerscrol.sliddelegate = self
         view.addSubview(headerscrol)
+       
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -50,6 +54,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = tableView.tag.description
         return cell
         
+    }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 46
     }
 
 }

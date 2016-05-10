@@ -21,10 +21,13 @@ class SlideScrollView: UIScrollView {
     */
     var buttonArr = NSMutableArray()
     var sliddelegate = slideDelegate?()
+    var line1:UIView!
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.userInteractionEnabled = true
-        
+        line1 = UIView.init(frame: CGRectMake(0, self.frame.height - 3, 60, 3))
+        line1.backgroundColor = UIColor.redColor()
+        self.addSubview(line1)
     }
     func initTableviews(num:CGFloat, dgt:UITableViewDelegate, dsource:UITableViewDataSource) {
         self.contentSize = CGSizeMake((num) * self.frame.width, 0)
@@ -34,8 +37,7 @@ class SlideScrollView: UIScrollView {
             let rect = CGRectMake(CGFloat(index) * self.frame.width, 0, self.frame.width, self.frame.height)
             let tableView = UITableView.init(frame: rect, style: UITableViewStyle.Grouped)
             tableView.tag = Int(index + 1)
-            let rd = CGFloat(arc4random() % 255) / 255
-            tableView.backgroundColor = UIColor.init(red: rd, green: rd, blue: rd, alpha: 1)
+            tableView.backgroundColor = UIColor.lightGrayColor()
             tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "rs")
             tableView.delegate = dgt
             tableView.dataSource = dsource
@@ -44,10 +46,10 @@ class SlideScrollView: UIScrollView {
         }
         
     }
-    func initHeaderView(num:CGFloat) {
-         self.contentSize = CGSizeMake((num) * 60, 0)
+    func initHeaderView(arr:NSArray) {
+         self.contentSize = CGSizeMake(CGFloat(arr.count) * 60, 0)
          self.pagingEnabled = false
-        for index in 0...Int(num - 1) {
+        for index in 0...arr.count - 1 {
             let btn = UIButton.init(type: UIButtonType.System)
             if index == 0 {
                 btn.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
@@ -55,7 +57,7 @@ class SlideScrollView: UIScrollView {
             btn.tag = index + 100
             btn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             btn.frame = CGRectMake(CGFloat(index) * 60, 0, 60, self.frame.height)
-            btn.setTitle((index + 1).description + "0000", forState: UIControlState.Normal)
+            btn.setTitle(arr[index] as? String, forState: UIControlState.Normal)
             btn.addTarget(self, action: #selector(SlideScrollView.offset(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             buttonArr.addObject(btn)
             self.addSubview(btn)
@@ -71,11 +73,13 @@ class SlideScrollView: UIScrollView {
         self.sliddelegate?.sendOfftag(sender.tag - 100)
         if CGFloat(sender.tag + 1 - 100) * 60 > self.frame.width + self.contentOffset.x{
             self.contentOffset.x = ((CGFloat(sender.tag + 1) - 100) * 60 - self.frame.width)
+            
         }
         if CGFloat(sender.tag - 100) * 60 < self.contentOffset.x{
             self.contentOffset.x = CGFloat(sender.tag - 100) * 60
-          
+         
         }
+        line1.frame = CGRectMake(sender.frame.origin.x, self.frame.height - 3, 60, 3)
     }
     func swipChange(num:Int) {
         let btn = self.viewWithTag(num + 100) as! UIButton
@@ -83,6 +87,7 @@ class SlideScrollView: UIScrollView {
             item.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         }
         btn.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+
         if CGFloat(num + 1) * 60 > self.frame.width + self.contentOffset.x{
             self.contentOffset.x = ((CGFloat(num + 1)) * 60 - self.frame.width)
         }
@@ -90,7 +95,7 @@ class SlideScrollView: UIScrollView {
             self.contentOffset.x = CGFloat(num) * 60
         
         }
-
+        line1.frame = CGRectMake(btn.frame.origin.x, self.frame.height - 3, 60, 3)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
