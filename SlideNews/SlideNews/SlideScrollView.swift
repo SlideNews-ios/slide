@@ -20,6 +20,7 @@ class SlideScrollView: UIScrollView {
     }
     */
     var buttonArr = NSMutableArray()
+    var tableArr = NSMutableArray()
     var sliddelegate = slideDelegate?()
     var line1:UIView!
     override init(frame: CGRect) {
@@ -27,12 +28,28 @@ class SlideScrollView: UIScrollView {
         self.userInteractionEnabled = true
         line1 = UIView.init(frame: CGRectMake(0, self.frame.height - 3, 60, 3))
         line1.backgroundColor = UIColor.redColor()
+        self.showsVerticalScrollIndicator = false
+        self.showsHorizontalScrollIndicator = false
         self.addSubview(line1)
     }
-    func initTableviews(num:CGFloat, dgt:UITableViewDelegate, dsource:UITableViewDataSource) {
-        self.contentSize = CGSizeMake((num) * self.frame.width, 0)
+    
+    func removeTables() {
+        for item in tableArr {
+            item.removeFromSuperview()
+        }
+        tableArr.removeAllObjects()
+    }
+
+    func removeButtons() {
+        for item in buttonArr {
+            item.removeFromSuperview()
+        }
+        buttonArr.removeAllObjects()
+    }
+    func initTableviews(arr:NSArray, dgt:UITableViewDelegate, dsource:UITableViewDataSource) {
+        self.contentSize = CGSizeMake(CGFloat(arr.count) * self.frame.width, 0)
         self.pagingEnabled = true
-        for index in 0...Int(num - 1) {
+        for index in 0...Int(arr.count - 1) {
             
             let rect = CGRectMake(CGFloat(index) * self.frame.width, 0, self.frame.width, self.frame.height)
             let tableView = UITableView.init(frame: rect, style: UITableViewStyle.Grouped)
@@ -41,6 +58,7 @@ class SlideScrollView: UIScrollView {
             tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "rs")
             tableView.delegate = dgt
             tableView.dataSource = dsource
+            tableArr.addObject(tableView)
             self.addSubview(tableView)
      
         }

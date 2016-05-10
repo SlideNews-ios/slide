@@ -39,7 +39,7 @@
                     <navigationItem key="navigationItem" id="6pH-9G-Pgx">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lfi-qh-9bf">
                             <connections>
-                                <segue destination="44i-gT-99j" kind="push" id="9Yz-Tw-ZOr"/>
+                                <segue destination="44i-gT-99j" kind="push" identifier="add" id="9Yz-Tw-ZOr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -48,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="152" y="449"/>
         </scene>
-        <!--View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="jO6-o3-sQd">
             <objects>
-                <viewController id="44i-gT-99j" sceneMemberID="viewController">
+                <viewController id="44i-gT-99j" customClass="addViewController" customModule="SlideNews" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eCX-1t-mDN"/>
                         <viewControllerLayoutGuide type="bottom" id="Hum-fX-HNq"/>

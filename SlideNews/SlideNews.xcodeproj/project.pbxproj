@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		836E6CB01CE165800000A690 /* addViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E6CAF1CE165800000A690 /* addViewController.swift */; };
 		838B91B61CE0295000CE818C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838B91B51CE0295000CE818C /* AppDelegate.swift */; };
 		838B91B81CE0295000CE818C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838B91B71CE0295000CE818C /* ViewController.swift */; };
 		838B91BB1CE0295000CE818C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 838B91B91CE0295000CE818C /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		836E6CAF1CE165800000A690 /* addViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addViewController.swift; sourceTree = "<group>"; };
 		838B91B21CE0295000CE818C /* SlideNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838B91B51CE0295000CE818C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		838B91B71CE0295000CE818C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				838B91B51CE0295000CE818C /* AppDelegate.swift */,
 				838B91B71CE0295000CE818C /* ViewController.swift */,
+				836E6CAF1CE165800000A690 /* addViewController.swift */,
 				838B91E31CE0320900CE818C /* SlideScrollView.swift */,
 				838B91B91CE0295000CE818C /* Main.storyboard */,
 				838B91BC1CE0295000CE818C /* Assets.xcassets */,
@@ -261,6 +264,7 @@
 			files = (
 				838B91B81CE0295000CE818C /* ViewController.swift in Sources */,
 				838B91B61CE0295000CE818C /* AppDelegate.swift in Sources */,
+				836E6CB01CE165800000A690 /* addViewController.swift in Sources */,
 				838B91E41CE0320900CE818C /* SlideScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +492,7 @@
 				838B91DC1CE0295000CE818C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		838B91DD1CE0295000CE818C /* Build configuration list for PBXNativeTarget "SlideNewsTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +501,7 @@
 				838B91DF1CE0295000CE818C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		838B91E01CE0295000CE818C /* Build configuration list for PBXNativeTarget "SlideNewsUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +510,7 @@
 				838B91E21CE0295000CE818C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
