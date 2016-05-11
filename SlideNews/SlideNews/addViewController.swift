@@ -177,10 +177,7 @@ class addViewController: UIViewController {
     }
     //下面的按钮点击
     func onclick1(sender:UIButton) {
-        
-        
-        
-        
+
         let wid = Int(self.view.frame.width - 40) / 3
         let button = UIButton.init(type: UIButtonType.System)
         button.frame = sender.frame
@@ -242,7 +239,29 @@ class addViewController: UIViewController {
     }
 //    上面的按钮点击
     func onclick(sender:UIButton) {
+        let wid = Int(self.view.frame.width - 40) / 3
+        let button = UIButton.init(type: UIButtonType.System)
+        let h = 50 + topView.frame.height
         
+        button.frame = sender.frame
+        button.tag = buttonArr1.count + 1001
+        button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        button.setTitle(sender.currentTitle, forState: UIControlState.Normal)
+        button.userInteractionEnabled = true
+        let long = UILongPressGestureRecognizer(target: self, action: #selector(addViewController.pressed(_:)))
+        button.addGestureRecognizer(long)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(addViewController.onclick1(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(button)
+        buttonArr1.addObject(button)
+        let i = buttonArr1.count - 1
+        UIView.animateWithDuration(0.4, animations: {
+            button.frame = CGRectMake(CGFloat((i % 3) * (wid + 10) + 10) , CGFloat((i / 3) * (24 + 10)) + h , CGFloat(wid), 30)
+        }) { (finished) in
+            self.reloadTpFrame()
+        }
+
         if buttonArr.count > 1 {
             if sender.tag != buttonArr.count {
             for index in sender.tag - 1...buttonArr.count - 2 {
